@@ -37,11 +37,21 @@ public class Account {
 		this.withdrawLimit = withdrawLimit;
 	}
 	
-	public void deposit (Double deposito) {
-		balance += deposito;
+	public void deposit (Double value) {
+		balance += value;
 	}
 	
-	public void withdraw (Double valor) {
-		balance -= valor;
+	public void withdraw (Double value) {
+		balance -= value;
+	}
+
+	public String validate (Double value) {
+		if (value > balance) {
+			return "Valor de saque excedido!";
+		}
+		if (value > withdrawLimit) {
+			return "Valor de saque excedeu o limite!";
+		}
+		return null;
 	}
 }

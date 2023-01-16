@@ -15,23 +15,20 @@ public class Program {
 		double valor = sc.nextDouble();
 		System.out.print("Limite de saque: ");
 		double limite = sc.nextDouble();
+		Account conta = new Account(number, name, valor, limite);
 		
 		System.out.print("Valor de saque: ");
 		double saque = sc.nextDouble();
 		
-		if (saque > valor) {
-			System.out.println("Valor de saque maior que o disponível!!");
-		}
-		
-		else if(saque > limite) {
-			System.out.println("Valor de saque maior que o limite!!");
+		if (conta.validate(saque) != null) {
+			System.out.println(conta.validate(saque));
 		}
 		
 		else {
-			Account conta = new Account(number, name, valor, limite);
 			conta.withdraw(saque);;
 			System.out.println("Novo valor disponível: " + String.format("%.2f", conta.getBalance()));
 		}
+		
 		sc.close();
 	}
 
