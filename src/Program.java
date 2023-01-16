@@ -27,6 +27,7 @@ public class Program {
 			conta.withdraw(saque);;
 			System.out.println("Novo valor disponível: " + String.format("%.2f", conta.getBalance()));
 			
+			System.out.println("fim");
 			sc.close();
 		}
 		
