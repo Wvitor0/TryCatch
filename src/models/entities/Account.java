@@ -41,17 +41,17 @@ public class Account {
 		balance += value;
 	}
 	
-	public void withdraw (Double value) {
+	public void withdraw (Double value) throws DomainException{
+		validate(value);
 		balance -= value;
 	}
 
-	public String validate (Double value) {
+	public void validate (Double value) throws DomainException {
 		if (value > balance) {
-			return "Valor de saque excedido!";
+			throw new DomainException("Valor de saque excedido!");
 		}
 		if (value > withdrawLimit) {
-			return "Valor de saque excedeu o limite!";
+			throw new DomainException("Valor de saque excedeu o limite!");
 		}
-		return null;
 	}
 }
